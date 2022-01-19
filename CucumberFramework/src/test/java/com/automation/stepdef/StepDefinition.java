@@ -1,9 +1,12 @@
 package com.automation.stepdef;
 
+import io.cucumber.datatable.DataTable;
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
+
+import java.util.List;
 
 public class StepDefinition {
     @Given("user opens website")
@@ -72,5 +75,25 @@ public class StepDefinition {
 
     @Then("verify error message shows up")
     public void verifyErrorMessageShowsUp() {
+    }
+
+    @Then("verify table has below data")
+    public void verifyTableHasBelowData(DataTable dataTable) {
+        List<List<String>> data= dataTable.asLists();
+
+        for(int i =0; i<data.size(); i++){
+            for(int j=0; j<data.get(i).size(); j++){
+                System.out.print(data.get(i).get(j)+" ");
+            }
+            System.out.println();
+        }
+    }
+
+    @When("user clicks on user badge icon")
+    public void userClicksOnUserBadgeIcon() {
+    }
+
+    @And("select on logout option")
+    public void selectOnLogoutOption() {
     }
 }
